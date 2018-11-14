@@ -68,7 +68,10 @@ class KmeansClustering():
         y = clf.fit_predict(weights)
 
         # 中心点
-        # clf.cluster_centers_
+        # centers = clf.cluster_centers_
+
+        # 用来评估簇的个数是否合适,距离约小说明簇分得越好,选取临界点的簇的个数
+        # score = clf.inertia_
 
         # 每个样本所属的簇
         result = {}
