@@ -54,28 +54,29 @@ class KmeansClustering():
     def kmeans(self, corpus_path, n_clusters=5):
         """
         KMeans文本聚类
-        :param corpus_path: 语料路径（每行一篇）,文章id从1开始
+        :param corpus_path: 语料路径（每行一篇）,文章id从0开始
         :param n_clusters: ：聚类类别数目
-        :return: {label1:[text_id1, text_id2]}
+        :return: {cluster_id1:[text_id1, text_id2]}
         """
         corpus = self.preprocess_data(corpus_path)
         weights = self.get_text_tfidf_matrix(corpus)
 
         clf = KMeans(n_clusters=n_clusters)
 
-        clf.fit(weights)
+        # clf.fit(weights)
+
+        y = clf.fit_predict(weights)
 
         # 中心点
         # clf.cluster_centers_
 
         # 每个样本所属的簇
         result = {}
-        for i in range(1, len(clf.labels_)+1):
-            label_idx = clf.labels_[i-1]
+        for text_idx, label_idx in enumerate(y):
             if label_idx not in result:
-                result[label_idx] = [i]
+                result[label_idx] = [text_idx]
             else:
-                result[label_idx].append(i)
+                result[label_idx].append(text_idx)
         return result
 
 
