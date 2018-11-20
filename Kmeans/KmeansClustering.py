@@ -84,6 +84,6 @@ class KmeansClustering():
 
 
 if __name__ == '__main__':
-    Kmeans = KmeansClustering(stopwords_path='./data/stop_words.txt')
-    result = Kmeans.kmeans('./data/test_data.txt', n_clusters=5)
+    Kmeans = KmeansClustering(stopwords_path='../data/stop_words.txt')
+    result = Kmeans.kmeans('../data/test_data.txt', n_clusters=5)
     print(result)
