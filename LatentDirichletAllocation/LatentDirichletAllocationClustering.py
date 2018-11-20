@@ -67,7 +67,6 @@ class LDAClustering():
         lda = LatentDirichletAllocation(n_components=n_components, max_iter=max_iter, learning_method=learning_method)
         docres = lda.fit_transform(cntTf)
 
-        print(docres)
         print_top_words(lda, tf_feature_names, n_top_words=10)
 
         return self.fmt_lda_result(docres)
