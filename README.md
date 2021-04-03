@@ -13,3 +13,6 @@
   
 - LatentDirichletAllocation
     - 基于LDA的无监督文本聚类
+    
+- Single_Pass
+    - 基于single pass 策略进行聚类，不需要事先设置类别数

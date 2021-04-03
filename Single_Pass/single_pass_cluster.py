@@ -19,7 +19,7 @@ class SinglePassCluster():
         self.cluster_center_vec = [] # [cluster_center_vec, ]
         self.idx_2_text = {}  # {文本id: text, }
         self.cluster_2_idx = {}  # {cluster_id: [text_id, ]}
-        self.res_path = res_save_path  # save self.cluster_2_idx 
+        self.res_path = res_save_path  # save self.cluster_2_idx
 
     def load_stopwords(self, path):
         stopwords = []
