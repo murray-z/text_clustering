@@ -4,6 +4,7 @@ import os
 import sys
 import jieba
 import json
+import numpy as np
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
@@ -49,11 +50,10 @@ class SinglePassCluster():
         return tfidf.todense().tolist()
 
     def cosion_simi(self, vec):
-        vecs = [vec] + self.cluster_center_vec
-        simi = cosine_similarity(vecs).tolist()[0][1:]
-        max_simi = max(simi)
-        max_idx = simi.index(max_simi)
-        return max_simi, max_idx
+        simi = cosine_similarity(np.array([vec]), np.array(self.cluster_center_vec))
+        max_idx = np.argmax(simi, arixs=1)[0]
+        max_val = simi[0][max_idx]
+        return max_val, max_idx
 
     def single_pass(self, texts):
         texts_cut = self.cut_sentences(texts)
